@@ -11,7 +11,7 @@ export default function TimezoneChangeDialog() {
   const { data: user, isLoading } = trpc.viewer.me.useQuery();
   const utils = trpc.useContext();
   const userTz = user?.timeZone;
-  const currentTz = dayjs.tz.guess();
+  const currentTz = dayjs.tz.guess() !== 'Etc/Unknown' ? dayjs.tz.guess() : 'Asia/Kolkata';
   const formattedCurrentTz = currentTz?.replace("_", " ");
 
   // update user settings

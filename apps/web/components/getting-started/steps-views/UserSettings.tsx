@@ -23,7 +23,7 @@ interface IUserSettingsProps {
 const UserSettings = (props: IUserSettingsProps) => {
   const { user, nextStep } = props;
   const { t } = useLocale();
-  const [selectedTimeZone, setSelectedTimeZone] = useState(dayjs.tz.guess());
+  const [selectedTimeZone, setSelectedTimeZone] = useState(dayjs.tz.guess() !== 'Etc/Unknown' ? dayjs.tz.guess() : 'Asia/Kolkata');
   const telemetry = useTelemetry();
   const userSettingsSchema = z.object({
     name: z
